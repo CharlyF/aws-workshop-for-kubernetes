@@ -30,10 +30,6 @@ spec:
             value: "true"
           - name: DD_PROCESS_AGENT_ENABLED
             value: "true"
-          - name: DD_LOGS_ENABLED
-            value: "true"
-          - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
-            value: "true"
           - name: HOST_PROC
             value: /host/proc
           - name: HOST_SYS
@@ -47,11 +43,6 @@ spec:
           - name: cgroups
             mountPath: /host/sys/fs/cgroup
             readOnly: true
-          - name: passwd
-            mountPath: /etc/passwd
-            readOnly: true
-          - name: pointerdir
-            mountPath: /opt/datadog-agent/run
       volumes:
         - hostPath:
             path: /run/docker.sock
@@ -62,12 +53,6 @@ spec:
         - hostPath:
             path: /sys/fs/cgroup
           name: cgroups
-        - hostPath:
-            path: /etc/passwd
-          name: passwd
-        - hostPath:
-            path: /opt/datadog-agent/run
-          name: pointerdir
 ---
 apiVersion: v1
 kind: Service
